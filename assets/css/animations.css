@@ -1,0 +1,95 @@
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Zoom Animation */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation Classes */
+.animate {
+    opacity: 0;
+}
+
+.animate.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate.slide-in {
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+.animate.zoom-in {
+    animation: zoomIn 0.8s ease-out forwards;
+}
+
+/* Destination Card Hover Effects */
+.destination-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.destination-card .destination-image {
+    transition: transform 0.5s ease;
+}
+
+.destination-card:hover .destination-image {
+    transform: scale(1.1);
+}
+
+/* Stagger Animation Delays */
+.destinations-grid .destination-card:nth-child(1) { animation-delay: 0.1s; }
+.destinations-grid .destination-card:nth-child(2) { animation-delay: 0.2s; }
+.destinations-grid .destination-card:nth-child(3) { animation-delay: 0.3s; }
+.destinations-grid .destination-card:nth-child(4) { animation-delay: 0.4s; }
+.destinations-grid .destination-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* Benefits Animation */
+.benefits-grid .benefit-card {
+    opacity: 0;
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+.benefits-grid .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+.benefits-grid .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+.benefits-grid .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+.benefits-grid .benefit-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Testimonial Animation */
+.testimonial-card {
+    opacity: 0;
+    animation: zoomIn 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+} 

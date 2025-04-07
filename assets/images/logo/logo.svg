@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150" height="40" viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .logo-text { font-family: 'Arial', sans-serif; font-weight: bold; }
+        .primary { fill: #2563eb; }
+        .secondary { fill: #f97316; }
+    </style>
+    <text x="10" y="28" class="logo-text primary">Bookng</text>
+    <text x="70" y="28" class="logo-text secondary">Hotels</text>
+</svg> 

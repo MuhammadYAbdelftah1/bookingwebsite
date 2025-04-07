@@ -1,0 +1,84 @@
+/* Image Assets and Optimizations */
+
+/* Logo */
+.logo img {
+    width: 150px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Hero Background Variations */
+.hero-section {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+        url('../assets/images/hero-bg.jpg');
+}
+
+/* Fallback for hero background */
+@media (max-width: 768px) {
+    .hero-section {
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            url('../assets/images/hero-bg-mobile.jpg');
+    }
+}
+
+/* Destination Images */
+.paris-img {
+    background-image: url('../assets/images/destinations/paris.jpg');
+}
+
+.newyork-img {
+    background-image: url('../assets/images/destinations/newyork.jpg');
+}
+
+.tokyo-img {
+    background-image: url('../assets/images/destinations/tokyo.jpg');
+}
+
+/* Image Optimization Classes */
+.img-responsive {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Lazy Loading Styles */
+.lazy-load {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.lazy-load.loaded {
+    opacity: 1;
+}
+
+/* Image Hover Effects */
+.img-hover-zoom {
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    transition: transform 0.5s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.1);
+}
+
+/* Responsive Image Sizing */
+@media (max-width: 768px) {
+    .destination-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .destination-image {
+        height: 180px;
+    }
+} 

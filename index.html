@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover stunning beach destinations and luxury resorts worldwide with BookngHotels">
+    <title>BookngHotels - Your Ultimate Beach Getaway</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo/favicon.svg">
+    <link rel="mask-icon" href="assets/images/logo/favicon.svg" color="#2563eb">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    
+    <!-- Intersection Observer Polyfill -->
+    <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
+    
+    <!-- Booking.com SDK -->
+    <script async src="https://www.booking.com/affiliate/prelanding_sdk"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="assets/images/logo/logo.svg" alt="BookngHotels Logo" width="150" height="40">
+            </a>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav">
+                <button class="menu-close" aria-label="Close Menu">
+                    <span></span>
+                </button>
+                <ul>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#experiences">Experiences</a></li>
+                    <li><a href="#benefits">Why Choose Us</a></li>
+                    <li><a href="#newsletter">Get Updates</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="assets/videos/hero/ocean_sunset.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content animate fade-in">
+            <h1>Discover Paradise</h1>
+            <p>Experience the world's most beautiful beaches and ocean views</p>
+            <div class="search-form">
+                <form class="booking-form" action="https://www.booking.com/searchresults.html" method="get" target="_blank">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" 
+                                       id="destination" 
+                                       name="ss" 
+                                       placeholder="Where are you going?" 
+                                       autocomplete="off"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="check-in">Check In</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                                <input type="date" id="check-in" name="checkin" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="check-out">Check Out</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                                <input type="date" id="check-out" name="checkout" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Guests</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user-friends"></i>
+                                <select id="guests" name="group_adults" required>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2" selected>2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5+ Guests</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="aid" value="304142">
+                    <input type="hidden" name="lang" value="en-us">
+                    <input type="hidden" name="dest_id" id="dest_id">
+                    <input type="hidden" name="dest_type" value="city">
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search"></i>
+                        Search Available Hotels
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations-section">
+        <div class="section-title">
+            <h2>Featured Beach Destinations</h2>
+        </div>
+        <div class="destinations-grid">
+            <!-- Destination cards will be dynamically added here -->
+        </div>
+    </section>
+
+    <!-- Featured Experiences Section -->
+    <section id="experiences" class="experiences-section">
+        <div class="container">
+            <h2 class="section-title animate fade-in">Unforgettable Experiences</h2>
+            <div class="experiences-grid">
+                <!-- Experience videos will be dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section parallax-section">
+        <div class="container">
+            <h2 class="section-title animate fade-in">Why Choose Us</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card animate slide-up">
+                    <i class="fas fa-hand-holding-usd benefit-icon"></i>
+                    <h3>Best Price Guarantee</h3>
+                    <p>We guarantee the lowest prices for your stay</p>
+                </div>
+                <div class="benefit-card animate slide-up" data-delay="200">
+                    <i class="fas fa-headset benefit-icon"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock assistance for your needs</p>
+                </div>
+                <div class="benefit-card animate slide-up" data-delay="400">
+                    <i class="fas fa-shield-alt benefit-icon"></i>
+                    <h3>Secure Booking</h3>
+                    <p>Safe and encrypted transactions</p>
+                </div>
+                <div class="benefit-card animate slide-up" data-delay="600">
+                    <i class="fas fa-gift benefit-icon"></i>
+                    <h3>Exclusive Deals</h3>
+                    <p>Special offers and discounts for members</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section parallax-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="animate fade-in">Get Travel Deals & Updates</h2>
+                <p class="animate fade-in" data-delay="200">Subscribe to our newsletter and never miss out on exclusive travel deals and updates</p>
+                <form class="newsletter-form animate fade-in" data-delay="400">
+                    <div class="newsletter-input">
+                        <input type="email" placeholder="Enter your email address" required>
+                    </div>
+                    <button type="submit" class="newsletter-button">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#experiences">Experiences</a></li>
+                    <li><a href="#benefits">Why Choose Us</a></li>
+                    <li><a href="#newsletter">Get Updates</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Developed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> by <a href="https://wa.me/201555550900" target="_blank" style="color: #fff; text-decoration: none;">Ecom-Eg</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const menuClose = document.querySelector('.menu-close');
+            const body = document.body;
+
+            // Function to close menu
+            function closeMenu() {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                body.style.overflow = '';
+            }
+
+            // Function to open menu
+            function openMenu() {
+                mainNav.classList.add('active');
+                menuToggle.classList.add('active');
+                body.style.overflow = 'hidden';
+            }
+
+            // Toggle menu
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openMenu();
+                });
+            }
+
+            // Close button click
+            if (menuClose) {
+                menuClose.addEventListener('click', closeMenu);
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                const isMenuOpen = mainNav.classList.contains('active');
+                const clickedInsideMenu = mainNav.contains(e.target);
+                const clickedMenuToggle = menuToggle.contains(e.target);
+                const clickedCloseButton = menuClose.contains(e.target);
+
+                if (isMenuOpen && !clickedInsideMenu && !clickedMenuToggle && !clickedCloseButton) {
+                    closeMenu();
+                }
+            });
+
+            // Close menu when clicking on navigation links
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            // Close menu when pressing Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+
+            // Initialize Booking.com Autocomplete
+            var destinationInput = document.getElementById('destination');
+            if (destinationInput) {
+                window.addEventListener('load', function() {
+                    if (typeof Booking !== 'undefined' && Booking.Autocomplete) {
+                        try {
+                            var autocomplete = new Booking.Autocomplete({
+                                target_aid: '304142',
+                                aid: '304142',
+                                lang: 'en-us',
+                                target: destinationInput,
+                                searchbox: true,
+                                onSelect: function(suggestion) {
+                                    destinationInput.value = suggestion.label;
+                                    var destIdInput = document.getElementById('dest_id');
+                                    if (destIdInput && suggestion.dest_id) {
+                                        destIdInput.value = suggestion.dest_id;
+                                    }
+                                }
+                            });
+                        } catch (error) {
+                            console.error('Error initializing Booking.com Autocomplete:', error);
+                        }
+                    } else {
+                        console.warn('Booking.com SDK not loaded yet');
+                    }
+                });
+            }
+
+            // Intersection Observer for animations
+            const animateElements = document.querySelectorAll('.animate');
+            
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, delay);
+                        animationObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(el => animationObserver.observe(el));
+            
+            // Load and render content from manifest
+            console.log('Starting to load manifest...');
+            fetch('assets/assets_manifest.json')
+                .then(response => {
+                    console.log('Fetch response status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(manifest => {
+                    console.log('Manifest loaded successfully:', manifest);
+                    
+                    // Render destinations
+                    const destinationsGrid = document.querySelector('.destinations-grid');
+                    console.log('Destinations grid element:', destinationsGrid);
+                    
+                    if (destinationsGrid && manifest.destinations) {
+                        console.log('Found destinations:', manifest.destinations);
+                        Object.entries(manifest.destinations).forEach(([key, dest]) => {
+                            console.log(`Processing destination: ${key}`, dest);
+                            const card = document.createElement('div');
+                            card.className = 'destination-card';
+                            
+                            const videoPath = dest.video_path;
+                            console.log(`Loading video for ${key} from:`, videoPath);
+                            
+                            card.innerHTML = `
+                                <div class="card-image">
+                                    <video class="destination-video" autoplay loop muted playsinline>
+                                        <source src="${videoPath}" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="card-content">
+                                    <h3 class="card-title">${dest.title}</h3>
+                                    <p class="card-description">${dest.description}</p>
+                                    <div class="card-price">${dest.price}</div>
+                                    <div class="card-rating">
+                                        ${Array(Math.floor(dest.rating)).fill('<i class="fas fa-star"></i>').join('')}
+                                        ${dest.rating % 1 ? '<i class="fas fa-star-half-alt"></i>' : ''}
+                                        <span>${dest.rating}</span>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            const videoElement = card.querySelector('video');
+                            videoElement.onerror = function(e) {
+                                console.error(`Error loading video for ${key}:`, e);
+                                this.parentElement.innerHTML = `
+                                    <div class="video-error">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <p>Video unavailable</p>
+                                    </div>
+                                `;
+                            };
+                            
+                            videoElement.onloadeddata = function() {
+                                console.log(`Video loaded successfully for ${key}`);
+                            };
+                            
+                            destinationsGrid.appendChild(card);
+                        });
+                    } else {
+                        console.error('Missing destinations grid or data:', {
+                            grid: destinationsGrid,
+                            data: manifest.destinations
+                        });
+                    }
+
+                    // Render featured videos
+                    const experiencesGrid = document.querySelector('.experiences-grid');
+                    console.log('Experiences grid element:', experiencesGrid);
+                    
+                    if (experiencesGrid && manifest.featured_videos) {
+                        console.log('Found featured videos:', manifest.featured_videos);
+                        manifest.featured_videos.forEach((video, index) => {
+                            console.log(`Processing featured video ${index}:`, video);
+                            const experienceCard = document.createElement('div');
+                            experienceCard.className = 'experience-card animate fade-in';
+                            experienceCard.dataset.delay = index * 200;
+                            
+                            const videoContainer = document.createElement('div');
+                            videoContainer.className = 'experience-video-container';
+                            
+                            const videoEl = document.createElement('video');
+                            videoEl.className = 'experience-video';
+                            videoEl.muted = true;
+                            videoEl.loop = true;
+                            videoEl.playsInline = true;
+                            videoEl.poster = video.thumbnail_path;
+                            
+                            const source = document.createElement('source');
+                            source.src = video.video_path;
+                            source.type = 'video/mp4';
+                            
+                            videoEl.appendChild(source);
+                            
+                            videoEl.onerror = function(e) {
+                                console.error(`Error loading featured video ${index}:`, e);
+                                this.parentElement.innerHTML = `
+                                    <div class="video-error">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <p>Video unavailable</p>
+                                    </div>
+                                `;
+                            };
+                            
+                            videoEl.onloadeddata = function() {
+                                console.log(`Featured video ${index} loaded successfully`);
+                            };
+                            
+                            const playButton = document.createElement('button');
+                            playButton.className = 'play-button';
+                            playButton.innerHTML = '<i class="fas fa-play"></i>';
+                            
+                            videoContainer.appendChild(videoEl);
+                            videoContainer.appendChild(playButton);
+                            
+                            const content = document.createElement('div');
+                            content.className = 'experience-content';
+                            content.innerHTML = `
+                                <h3>${video.title}</h3>
+                                <p>${video.description}</p>
+                                <div class="experience-meta">
+                                    <span class="experience-duration">
+                                        <i class="fas fa-clock"></i> ${Math.round(video.duration / 60)} min
+                                    </span>
+                                    <button class="btn btn-secondary">Learn More</button>
+                                </div>
+                            `;
+                            
+                            experienceCard.appendChild(videoContainer);
+                            experienceCard.appendChild(content);
+                            experiencesGrid.appendChild(experienceCard);
+                            
+                            // Add video play/pause functionality
+                            let isPlaying = false;
+                            
+                            playButton.addEventListener('click', () => {
+                                if (isPlaying) {
+                                    videoEl.pause();
+                                    playButton.innerHTML = '<i class="fas fa-play"></i>';
+                                } else {
+                                    videoEl.play();
+                                    playButton.innerHTML = '<i class="fas fa-pause"></i>';
+                                }
+                                isPlaying = !isPlaying;
+                            });
+                            
+                            experienceCard.addEventListener('mouseenter', () => {
+                                if (!isPlaying) {
+                                    videoEl.play();
+                                    playButton.style.opacity = '0';
+                                }
+                            });
+                            
+                            experienceCard.addEventListener('mouseleave', () => {
+                                if (!isPlaying) {
+                                    videoEl.pause();
+                                    videoEl.currentTime = 0;
+                                    playButton.style.opacity = '1';
+                                }
+                            });
+                        });
+                    } else {
+                        console.error('Missing experiences grid or data:', {
+                            grid: experiencesGrid,
+                            data: manifest.featured_videos
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Detailed error loading content:', error);
+                    const destinationsGrid = document.querySelector('.destinations-grid');
+                    const experiencesGrid = document.querySelector('.experiences-grid');
+                    
+                    if (destinationsGrid) {
+                        destinationsGrid.innerHTML = `
+                            <div class="error-message">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <p>Unable to load destinations. Please try again later.</p>
+                                <p class="error-details">${error.message}</p>
+                            </div>
+                        `;
+                    }
+                    
+                    if (experiencesGrid) {
+                        experiencesGrid.innerHTML = `
+                            <div class="error-message">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <p>Unable to load experiences. Please try again later.</p>
+                                <p class="error-details">${error.message}</p>
+                            </div>
+                        `;
+                    }
+                });
+                
+            // Parallax effect for sections with background
+            const parallaxSections = document.querySelectorAll('.parallax-section');
+            window.addEventListener('scroll', () => {
+                parallaxSections.forEach(section => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * 0.5;
+                    section.style.backgroundPosition = `center ${rate}px`;
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
